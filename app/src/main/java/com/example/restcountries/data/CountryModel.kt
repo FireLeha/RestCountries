@@ -5,5 +5,11 @@ data class CountryModel(
     val flag: String?,
     val region: String?,
     val capital: String?,
+//    val currencies: List<Currency>,
     val timezones: List<String>?
 )
+
+//data class Currency(
+//    val name: String,
+//    val symbol: String
+//)

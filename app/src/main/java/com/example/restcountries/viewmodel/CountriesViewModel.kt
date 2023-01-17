@@ -1,6 +1,5 @@
 package com.example.restcountries.viewmodel
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.restcountries.data.CountryModel
@@ -10,14 +9,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class CountriesViewModel: ViewModel() {
 
-class MainActivityViewModel: ViewModel() {
-
-    lateinit var liveDataList: MutableLiveData<List<CountryModel>>
-
-    init {
-        liveDataList = MutableLiveData()
-    }
+    var liveDataList: MutableLiveData<List<CountryModel>> = MutableLiveData()
 
     fun getLiveDataObserver(): MutableLiveData<List<CountryModel>> {
         return liveDataList
@@ -27,7 +21,7 @@ class MainActivityViewModel: ViewModel() {
         val retrofitInstance = RetrofitInstance.getRetroInstance()
         val retrofitService = retrofitInstance.create(RetrofitServiceInterface::class.java)
         val call = retrofitService.getCountryList()
-        call.enqueue(object : Callback<List<CountryModel>>{
+        call.enqueue(object : Callback<List<CountryModel>> {
             override fun onResponse(
                 call: Call<List<CountryModel>>,
                 response: Response<List<CountryModel>>,
