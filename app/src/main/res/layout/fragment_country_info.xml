@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/tvNameSize"
             android:textStyle="bold"
             tools:text="Country" />
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/tvNameSize"
             android:textStyle="bold"
             tools:text="Region" />
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/tvNameSize"
             android:textStyle="bold"
             tools:text="Capital" />
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/tvNameSize"
             android:textStyle="bold"
             tools:text="Currency" />
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/tvNameSize"
             android:textStyle="bold"
             tools:text="Timezone" />
 

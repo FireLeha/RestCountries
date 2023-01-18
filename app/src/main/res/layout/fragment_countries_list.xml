@@ -14,12 +14,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"
-        tools:text = "asdasdasdasdasdasd"
+        tools:text = "name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/tvNameSize"
         android:textStyle="bold" />
 
 </LinearLayout>

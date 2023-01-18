@@ -1,11 +1,9 @@
 package com.example.restcountries.adapter
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.SvgDecoder
@@ -16,7 +14,8 @@ import com.example.restcountries.databinding.FragmentCountriesListBinding
 import com.example.restcountries.utils.MyItemClickListener
 
 
-class CountriesAdapter(val listener: MyItemClickListener) : RecyclerView.Adapter<CountriesAdapter.MainViewHolder>() {
+class CountriesAdapter(val listener: MyItemClickListener) :
+    RecyclerView.Adapter<CountriesAdapter.MainViewHolder>() {
 
     private var countriesData: List<CountryModel> = listOf()
 
@@ -50,19 +49,17 @@ class CountriesAdapter(val listener: MyItemClickListener) : RecyclerView.Adapter
 
         fun bind(data: CountryModel) {
             with(binding) {
-
                 flagImage.loadUrl(data.flag)
                 tvName.text = data.name
                 tvName.setOnClickListener {
                     listener.onItemClick(data)
                 }
             }
-
         }
 
         private fun ImageView.loadUrl(url: String) {
             val imageLoader = ImageLoader.Builder(this.context)
-                .components{add(SvgDecoder.Factory())}
+                .components { add(SvgDecoder.Factory()) }
                 .build()
 
             val request = ImageRequest.Builder(this.context)

@@ -12,21 +12,15 @@ import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.restcountries.data.CountryModel
 import com.example.restcountries.databinding.FragmentCountryInfoBinding
-import com.example.restcountries.ui.country_list.CountriesFragment
-import com.example.restcountries.viewmodel.CountriesViewModel
 import com.example.restcountries.viewmodel.CountryInfoViewModel
 
-class CountryInfo:Fragment() {
+class CountryInfo : Fragment() {
 
     private var _binding: FragmentCountryInfoBinding? = null
     private val binding: FragmentCountryInfoBinding
-    get() = _binding!!
+        get() = _binding!!
 
-    private val infoViewModel: CountryInfoViewModel by lazy {
-        ViewModelProvider(this).get(CountryInfoViewModel::class.java)
-    }
-
-    lateinit var countryInfo:CountryModel
+    lateinit var countryInfo: CountryModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +30,8 @@ class CountryInfo:Fragment() {
     private fun initViewModel() {
         arguments?.let {
             it.getParcelable<CountryModel>("key")?.let {
-                countryInfo= it
-                with(binding){
+                countryInfo = it
+                with(binding) {
                     tvName.text = it.name
                     tvRegion.text = it.region
                     tvCapital.text = it.capital
@@ -52,14 +46,13 @@ class CountryInfo:Fragment() {
 
     private fun ImageView.loadUrl(url: String) {
         val imageLoader = ImageLoader.Builder(this.context)
-            .components{add(SvgDecoder.Factory())}
+            .components { add(SvgDecoder.Factory()) }
             .build()
 
         val request = ImageRequest.Builder(this.context)
             .data(url)
             .target(this)
             .build()
-
         imageLoader.enqueue(request)
     }
 
@@ -71,14 +64,14 @@ class CountryInfo:Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentCountryInfoBinding.inflate(inflater, container,false)
+        _binding = FragmentCountryInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     companion object {
-        fun newInstance(bundle: Bundle):CountryInfo = CountryInfo().apply {
+        fun newInstance(bundle: Bundle): CountryInfo = CountryInfo().apply {
             arguments = bundle
         }
     }
