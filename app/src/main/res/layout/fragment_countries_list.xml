@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:layout_marginStart="10dp" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"
         tools:text = "asdasdasdasdasdasd"
         android:layout_width="wrap_content"

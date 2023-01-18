@@ -8,16 +8,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.restcountries.R
 import com.example.restcountries.adapter.CountriesAdapter
+import com.example.restcountries.data.CountryModel
 import com.example.restcountries.databinding.FragmentCountriesBinding
+import com.example.restcountries.ui.country_info.CountryInfo
+import com.example.restcountries.utils.MyItemClickListener
 import com.example.restcountries.viewmodel.CountriesViewModel
 
-class CountriesFragment : Fragment() {
+class CountriesFragment : Fragment(), MyItemClickListener {
 
-    private val adapter: CountriesAdapter by lazy { CountriesAdapter() }
+    private val adapter: CountriesAdapter by lazy { CountriesAdapter(this) }
 
     private val viewModel: CountriesViewModel by lazy {
-        ViewModelProvider(this).get(CountriesViewModel::class.java) }
+        ViewModelProvider(this).get(CountriesViewModel::class.java)
+    }
 
     private var _binding: FragmentCountriesBinding? = null
     private val binding: FragmentCountriesBinding
@@ -31,7 +36,7 @@ class CountriesFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        with(binding){
+        with(binding) {
             fragmentCountriesRecyclerview.adapter = adapter
 
         }
@@ -63,6 +68,17 @@ class CountriesFragment : Fragment() {
 
     companion object {
         fun newInstance() = CountriesFragment()
+    }
+
+    override fun onItemClick(data: CountryModel) {
+        Bundle().apply {
+            putParcelable("key", data)
+            activity?.run {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.activityContainer, CountryInfo.newInstance(bundle = this@apply))
+                    .addToBackStack("").commit()
+            }
+        }
     }
 
 }
